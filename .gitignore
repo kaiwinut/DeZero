@@ -1,2 +1,8 @@
+# Pycache files
 __pycache__/ 
+
+# Images
+*.png
+
+# MacOS specifics
 .DS_Store
