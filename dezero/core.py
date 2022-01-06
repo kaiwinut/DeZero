@@ -82,8 +82,8 @@ class Variable:
 			shape = shape[0]
 		return dezero.functions.reshape(self, shape)
 
-	def tranpose(self):
-		return dezero.functions.tranpose(self)
+	def transpose(self):
+		return dezero.functions.transpose(self)
 
 	def sum(self, axis = None, keepdims = False):
 		return dezero.functions.sum(self, axis, keepdims)
@@ -107,7 +107,7 @@ class Variable:
 
 	@property
 	def T(self):
-		return dezero.functions.tranpose(self)
+		return dezero.functions.transpose(self)
 
 	def __len__(self):
 		return len(self.data)
@@ -117,6 +117,10 @@ class Variable:
 			return 'variable(None)'
 		p = str(self.data).replace('\n', '\n' + ' ' * 9)
 		return 'variable(' + p + ')'
+
+
+class Parameter(Variable):
+	pass
 
 
 class Function:
