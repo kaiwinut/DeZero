@@ -18,6 +18,9 @@ else:
 	from dezero.core import as_array
 	from dezero.core import as_variable
 	from dezero.core import setup_variable
+	from dezero.layers import Layer
+	from dezero.models import Model
+	import dezero.optimizers
 	import dezero.functions
 	import dezero.utils
 

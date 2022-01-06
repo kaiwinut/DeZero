@@ -1,5 +1,6 @@
 import os
 import subprocess
+import numpy as np
 
 def _dot_var(v, verbose = False):
 	dot_var = '{} [label="{}", color=orange, style=filled]\n'
@@ -106,3 +107,25 @@ def reshape_sum_backward(gy, x_shape, axis, keepdims):
 
 	gy = gy.reshape(shape)
 	return gy
+
+
+def max_backward_shape(x, axis):
+	if axis is None:
+		axis = range(x.ndim)
+	elif isinstance(axis, int):
+		axis = (axis,)
+	else:
+		axis = axis
+
+	shape = [s if ax not in axis else 1 for ax, s in enumerate(x.shape)]
+	return shape
+
+
+def logsumexp(x, axis=1):
+	m = x.max(axis=axis, keepdims=True)
+	y = x - m
+	np.exp(y, out=y)
+	s = y.sum(axis=axis, keepdims=True)
+	np.log(s, out=s)
+	m += s
+	return m
