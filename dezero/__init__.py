@@ -22,6 +22,9 @@ else:
 	from dezero.models import Model
 	import dezero.optimizers
 	import dezero.functions
+	import dezero.datasets
+	import dezero.transforms
+	import dezero.dataloaders
 	import dezero.utils
 
 setup_variable()
